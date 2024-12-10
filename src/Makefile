@@ -1,9 +1,13 @@
 DIR_DATA=../data08
+PYTHON2=/Users/deng/.conda/envs/ribo/bin/python
+
+# Above two lines can be modified as needed
+
 FILE_REF=../ref/true_genes_only.gtf
 FILE_REF_ALL=../ref/genomic.gtf
-FILE_FNA=../ref/GCF_000750555.1_ASM75055v1_genomic.fna
+FILE_FNA=../ref/genomic.fna
 DIR_COUNT_07="../data07/deseq2"
-DIR_COUNT_08="../data08B/deseq2"
+DIR_COUNT_08="../data08/deseq2"
 
 rDiff_PATH=/Users/deng/Research/rna/RiboDiff/scripts/TE.py
 
@@ -39,7 +43,7 @@ $(DIR_DESEQ2):  3-to_csv_feature.py 4-deseq2.R
 	Rscript 4-deseq2.R $(DIR_DESEQ2) 1
 	mv $(DIR_DESEQ2)/Rplots.pdf $(DIR_DESEQ2)/A-C.pdf
 
-$(DIR_DATA)/scatter/norm.csv: $(DIR_DATA)/feature 15-csv.py 16-norm.R 
+$(DIR_DATA)/scatter/norm.csv:  15-csv.py 16-norm.R 
 	mkdir -p $(DIR_DATA)/scatter
 	python 15-csv.py $(DIR_DATA)/feature $(DIR_DATA)/scatter
 	Rscript 16-norm.R $(DIR_DATA)/scatter
@@ -50,6 +54,7 @@ scatter: $(DIR_DATA)/scatter/norm.csv
 venn: $(DIR_DESEQ2) 14-venn_padj.py
 	mkdir -p $(DIR_VENN)
 	python 14-venn_padj.py $(DIR_DESEQ2) $(DIR_VENN)
+	python id2name.py $(DIR_VENN)
 
 
 RNA: $(DIR_RNA)
@@ -60,25 +65,17 @@ $(DIR_RNA): ribo-count.sh $(FILE_REF_rRNA) $(DIR_BOWTIE)
 	./ribo-count.sh $(FILE_REF_ALL) $(DIR_BOWTIE) $(DIR_RNA)
 
 
-rDiff:
+rdiff:
 	mkdir -p $(DIR_RDIFF) 
 	python ribo_input.py 0 $(DIR_COUNT_07) $(DIR_COUNT_08) $(DIR_RDIFF)
-	#source init.sh
-	#conda init bash
-	#conda deactivate
-	#conda activate ribo
-	/Users/deng/.conda/envs/ribo/bin/python $(rDiff_PATH) -e $(DIR_RDIFF)/meta-1.csv -c $(DIR_RDIFF)/matrix-1.csv -o $(DIR_RDIFF)/result-1.tsv -p 1
-	#conda deactivate
-
-rDiff-C:
-	mkdir -p $(DIR_RDIFF) 
+	$(PYTHON2) $(rDiff_PATH) -e $(DIR_RDIFF)/meta-1.csv -c $(DIR_RDIFF)/matrix-1.csv -o $(DIR_RDIFF)/result-1.tsv -p 1
 	python ribo_input.py 1 $(DIR_COUNT_07) $(DIR_COUNT_08) $(DIR_RDIFF)
-	#init.sh
-	/Users/deng/.conda/envs/ribo/bin/python $(rDiff_PATH) -e $(DIR_RDIFF)/meta-2.csv -c $(DIR_RDIFF)/matrix-2.csv -o $(DIR_RDIFF)/result-2.tsv -p 1
+	$(PYTHON2) $(rDiff_PATH) -e $(DIR_RDIFF)/meta-2.csv -c $(DIR_RDIFF)/matrix-2.csv -o $(DIR_RDIFF)/result-2.tsv -p 1
 
 ribo-venn:
 	mkdir -p $(DIR_RIBO_VENN)
 	python venn.py $(DIR_RDIFF) $(DIR_RIBO_VENN)
+	python id2name.py $(DIR_RIBO_VENN)
 
 
 

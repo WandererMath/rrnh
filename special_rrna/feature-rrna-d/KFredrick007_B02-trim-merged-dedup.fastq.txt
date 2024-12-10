@@ -1,0 +1,9 @@
+# Program:featureCounts v2.0.7; Command:"featureCounts" "-s" "1" "-M" "--fraction" "-Q" "20" "-T" "48" "-t" "transcript" "-g" "gene_id" "-a" "../ref/d2.gtf" "-o" "../data07/feature-rrna-d/KFredrick007_B02-trim-merged-dedup.fastq.txt" "../data07/bowtie-d/KFredrick007_B02-trim-merged-dedup.fastq.txt" 
+Geneid	Chr	Start	End	Strand	Length	../data07/bowtie-d/KFredrick007_B02-trim-merged-dedup.fastq.txt
+BW25113_RS01010	NZ_CP009273.1	221258	221281	+	24	14324
+BW25113_RS13535	NZ_CP009273.1	2723493	2723516	-	24	65697
+BW25113_RS17000	NZ_CP009273.1	3421098	3421121	-	24	65697
+BW25113_RS19520	NZ_CP009273.1	3936168	3936191	+	24	65670
+BW25113_RS19980	NZ_CP009273.1	4029891	4029914	+	24	65667
+BW25113_RS20590	NZ_CP009273.1	4157587	4157610	+	24	65669
+BW25113_RS20790	NZ_CP009273.1	4199075	4199098	+	24	65670

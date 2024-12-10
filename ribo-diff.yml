@@ -1,0 +1,39 @@
+name: ribo
+channels:
+  - bioconda
+  - defaults
+dependencies:
+  - ca-certificates=2024.9.24
+  - certifi=2020.6.20
+  - libffi=3.4.4
+  - ncurses=6.4
+  - pip=19.3.1
+  - python=2.7.18
+  - readline=8.2
+  - setuptools=44.0.0
+  - sqlite=3.45.3
+  - tk=8.6.14
+  - wheel=0.37.1
+  - zlib=1.2.13
+  - pip:
+      - backports-functools-lru-cache==1.6.6
+      - chardet==4.0.0
+      - cycler==0.10.0
+      - idna==2.10
+      - kiwisolver==1.1.0
+      - matplotlib==2.2.5
+      - numpy==1.16.6
+      - panda==0.3.1
+      - pandas==0.24.2
+      - patsy==0.5.6
+      - pyparsing==2.4.7
+      - python-dateutil==2.9.0.post0
+      - pytz==2024.2
+      - requests==2.27.1
+      - ribodiff==0.2.1
+      - scipy==1.2.3
+      - six==1.16.0
+      - statsmodels==0.10.2
+      - subprocess32==3.5.4
+      - urllib3==1.26.20
+prefix: /Users/deng/.conda/envs/ribo
