@@ -1,6 +1,6 @@
 To quickly build the project,
 
-git clone
+git clone https://github.com/WandererMath/rrnh
 cd src
 
 (1) Analyzing RNA-seq data 
