@@ -1,0 +1,39 @@
+To quickly build the project,
+
+git clone
+cd src
+
+(1) Analyzing RNA-seq data 
+
+Change the first line of Makefile to:
+DIR_DATA=../data07
+
+DESeq2 Analysis:
+make deseq2
+
+Make Venn Diagram:
+make venn
+
+Make scatter plots:
+make scatter
+
+(2) Analyzing Ribo-Seq data:
+Change the first line of Makefile to:
+DIR_DATA=../data08
+
+Follow the same steps as (1):
+make deseq2
+make venn
+make scatter
+
+Next, TE analysis:
+Create a python2 enviroment and then install RiboDiff.
+Activate the environment, type:
+which python
+to know the python2 path. Then change the 2nd line of Makefile to:
+PYTHON2=[your python2 path] 
+Then deactivate python2 environment and activate python3 environment. Run:
+make rdiff
+
+Make Venn Diagram for TE:
+make ribo-venn

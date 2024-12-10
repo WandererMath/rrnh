@@ -1,0 +1,1 @@
+awk '$3 == "transcript" {print $0}' your_tab_separated_file.txt
