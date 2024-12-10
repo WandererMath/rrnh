@@ -5,6 +5,7 @@ cd src
 
 (1) Analyzing RNA-seq data 
 
+
 Change the first line of Makefile to:
 DIR_DATA=../data07
 
